@@ -1,4 +1,5 @@
 const got = require('got')
+const Wallet = require('./wallet')
 
 async function getDifficulty() { 
     try {
@@ -49,10 +50,12 @@ async function latestHash() {
 // WIP
 // Seems to be broken to wallet reading -- will fix later
 
-// async function getWalletBalance(address) {
+// async function getWallet(address) {
 //     try {
-//         const response = await got(`blockchain.info/balance?active=${address}`)
-//         return response.body.address.final_balance
+//         const response = await got(`blockchain.info/rawaddr/${address}`)
+//         console.log(response.body)
+//         return new Wallet(response.body)
+        
 //     } catch(err) {
 //         return err
 //     }
@@ -65,5 +68,5 @@ module.exports = {
     totalBtc,
     bcPerBlock,
     latestHash,
-    getWalletBalance
+    getWallet
 }
